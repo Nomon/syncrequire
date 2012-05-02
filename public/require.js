@@ -3,7 +3,7 @@
   window.require = require;
 
   function require(file) {
-    if(!cache['file']) {
+    if(!cache[file]) {
       var req = new XMLHttpRequest();
       req.open("GET", "/"+file+'.js',false);
       req.send();
