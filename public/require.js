@@ -8,13 +8,10 @@
       req.open("GET", "/"+file+'.js',false);
       req.send();
       if (req.status === 200) {
-        window.exports = {};
+	var module = {exports:{}};
+	var exports = module.exports;
         var e = eval(req.responseText);
-        cache[file] = {};
-        for(var i in window.exports) {
-           cache[file][i] = window.exports[i];
-        }
-        window.exports  = {};
+        cache[file] = module.exports;
       }
     }
     return cache[file];
